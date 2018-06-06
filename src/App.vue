@@ -2,11 +2,39 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/library">Library</router-link>
     </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
+
+<style>
+/**
+ * Tailwind setup
+ * https://medium.com/@Engr_Ejo/how-to-use-tailwind-css-with-vue-9633e78533ee
+ */
+
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ */
+@import "tailwindcss/preflight";
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@import "tailwindcss/components";
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@import "tailwindcss/utilities";
+</style>
 
 <style lang="scss">
 #app {
