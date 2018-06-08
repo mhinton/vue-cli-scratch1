@@ -35,7 +35,6 @@ export default new Vuex.Store({
 
   mutations: {
     SET_PROP_VALUE: function(state, propUpdate) {
-      // const prop = this.state.entity.find(p => p.propId === propUpdate.propId);
       propUpdate.prop.value = propUpdate.value;
       return true;
     }
