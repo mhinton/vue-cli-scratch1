@@ -6,11 +6,6 @@
       <router-link to="/library">Library</router-link>
     </div>
     <router-view></router-view>
-    <!--user icon in two different styles
-    <i class="fas fa-user"></i>
-    <i class="far fa-user"></i>
-    <i class="fab fa-github-square"></i>
-    -->
   </div>
 </template>
 
