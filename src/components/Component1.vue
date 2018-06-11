@@ -9,8 +9,7 @@
         {{ property.label }}:
         <component
           :is="`prop-${property.type}`"
-          :value="property"
-          @click-prop="clickedProp"
+          :property="property"
         ></component>
       </div>
     </div>
@@ -18,14 +17,12 @@
 </template>
 
 <script>
-// import PropRender from "./PropRender";
 import PropButton from "./PropButton";
 import PropFavorite from "./PropFavorite";
 
 export default {
   props: ["value"],
   components: {
-    // PropRender
     PropButton,
     PropFavorite
   },
@@ -46,13 +43,6 @@ export default {
   methods: {
     toggleBody() {
       this.expanded = !this.expanded;
-    },
-
-    clickedProp(evt) {
-      // console.log(`clickedProp propId: ${JSON.stringify(evt)}`);
-      const prop = this.$props.value.properties.filter(p => p.propId === evt.propId)[0];
-      console.log(`prop: ${JSON.stringify(prop)}`);
-      this.$emit('click-prop', evt);
     },
   },
 }
