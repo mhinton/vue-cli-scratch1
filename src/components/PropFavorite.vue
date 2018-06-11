@@ -6,24 +6,16 @@
 
 <script>
 export default {
-  props:["value"],
-
-  computed: {
-    favorited() {
-      const val = this.$props.value;
-      const prop = this.$store.state.entity.properties.find(p => p.propId === val.propId);
-      return prop.value;
-    }
-  },
+  props:["property"],
 
   methods: {
     toggle() {
-      const val = this.$props.value;
-      this.$store.dispatch("updateProp", { propId: val.propId, value: !val.value });
+      const property = this.$props.property;
+      this.$store.dispatch("updateProp", { propId: property.propId, value: !property.value });
     },
 
     iconClass() {
-      if (this.favorited) {
+      if (this.property.value) {
         return 'fas';
       } else {
         return 'far';
