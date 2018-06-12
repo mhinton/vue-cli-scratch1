@@ -2,10 +2,10 @@
   <div class="cmp1wrapper">
     <div class="cmp1head" @click="toggleBody">
       <div>{{ obj.title }}</div>
-      <div class="cmp1icon"><i class="fas fa-3x" :class="obj.icon" /></div>
+      <div class="cmp1icon"><i :class="obj.icon" class="fas fa-3x" /></div>
     </div>
-    <div class="cmp1body" v-show="expanded">
-      <div class="cmp1prop" v-for="property in obj.properties" :key="property.propId">
+    <div v-show="expanded" class="cmp1body">
+      <div v-for="property in obj.properties" :key="property.propId" class="cmp1prop">
         {{ property.label }}:
         <component
           :is="`prop-${property.type}`"
@@ -21,17 +21,17 @@ import PropButton from "./PropButton";
 import PropFavorite from "./PropFavorite";
 
 export default {
-  props: ["value"],
   components: {
     PropButton,
     PropFavorite
   },
+  props: ["value"],
 
   data() {
     return {
       expanded: false,
-      obj: this.$props.value,
-    }
+      obj: this.$props.value
+    };
   },
 
   computed: {
@@ -43,9 +43,9 @@ export default {
   methods: {
     toggleBody() {
       this.expanded = !this.expanded;
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
