@@ -1,12 +1,12 @@
 <template>
-  <popper ref="popup" trigger="click" @hide="cleanup" :options="{placement: 'top'}">
+  <popper ref="popup" :options="{placement: 'top'}" trigger="click" @hide="cleanup">
     <div class="popper">
       <!-- Prop editor will be rendered here -->
     </div>
 
     <button slot="reference"
-        :class="`bg-${color()} hover:bg-${hoverColor()} text-${textColor()} font-bold py-2 px-4 rounded-full border-2`"
-        @click="edit">
+            :class="`bg-${color()} hover:bg-${hoverColor()} text-${textColor()} font-bold py-2 px-4 rounded-full border-2`"
+            @click="edit">
       {{property.text}}
     </button>
   </popper>
@@ -20,11 +20,10 @@ import { TinyColor } from "@ctrl/tinycolor";
 import "vue-popperjs/dist/css/vue-popper.css";
 
 export default {
-  props:["property"],
-
   components: {
-    'popper': Popper
+    popper: Popper
   },
+  props: ["property"],
 
   methods: {
     color() {
@@ -40,11 +39,13 @@ export default {
       } else {
         newIdx += 2;
       }
-      const options = this.$store.state.propOptions.filter(p => p.render === property.render);
+      const options = this.$store.state.propOptions.filter(
+        p => p.render === property.render
+      );
       const currentOption = options.find(p => p.value === property.value);
       const currentIdx = this.$store.state.propOptions.indexOf(currentOption);
       newIdx = currentIdx + newIdx;
-      if (newIdx <= 0 || newIdx >=  options.length) {
+      if (newIdx <= 0 || newIdx >= options.length) {
         // handle ends
         if (newIdx < 0) {
           newIdx = options.length - newIdx;
@@ -65,9 +66,11 @@ export default {
       }
     },
 
-    edit(event) {
+    edit() {
       const editorClass = Vue.extend(Mapper[this.$props.property.render]);
-      const items = this.$store.state.propOptions.filter(opt => opt.render === this.$props.property.render);
+      const items = this.$store.state.propOptions.filter(
+        opt => opt.render === this.$props.property.render
+      );
       this.editor = new editorClass({
         propsData: {
           items: items
@@ -87,13 +90,17 @@ export default {
 
     choose(newPropOptionId) {
       this.cleanup();
-      console.log(`chose ${newPropOptionId}`);
-      const newPropOpt = this.$store.state.propOptions.find(propOpt => propOpt.id === newPropOptionId);
-      console.log(`chose ${JSON.stringify(newPropOpt)}`);
-      this.$store.dispatch("updateProp", { propId: this.property.propId, value: newPropOpt.value, text: newPropOpt.text });
+      const newPropOpt = this.$store.state.propOptions.find(
+        propOpt => propOpt.id === newPropOptionId
+      );
+      this.$store.dispatch("updateProp", {
+        propId: this.property.propId,
+        value: newPropOpt.value,
+        text: newPropOpt.text
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
