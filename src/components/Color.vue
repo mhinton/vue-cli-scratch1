@@ -1,9 +1,9 @@
 <template>
   <div>
     <div v-for="item in items"
-        :key="item.id"
-        @click="pick"
-        :style="`background-color: ${item.value}`">
+         :key="item.id"
+         :style="`background-color: ${item.value}`"
+         @click="pick">
       <span :data-id="item.id">{{ item.text }}</span>
     </div>
   </div>
@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       items: this.$options.propsData.items
-    }
+    };
   },
 
   methods: {
@@ -23,7 +23,7 @@ export default {
       this.choose(id);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
