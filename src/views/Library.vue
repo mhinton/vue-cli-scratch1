@@ -22,11 +22,10 @@ export default {
   data() {
     return {
       entity: this.$store.state.entity
-    }
-  },
-}
+    };
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
