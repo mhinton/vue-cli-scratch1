@@ -1,15 +1,18 @@
 <template>
-  <div>
+  <div class="picker-colors">
     <div v-for="item in items"
          :key="item.id"
-         :style="`background-color: ${item.value}`"
+         :data-id="item.id"
+         :style="`background-color: ${item.value}; color: ${colorFrom(item.value)}`"
          @click="pick">
-      <span :data-id="item.id">{{ item.text }}</span>
+      {{ item.text }}
     </div>
   </div>
 </template>
 
 <script>
+import ColorUtils from "@/lib/ColorUtils";
+
 export default {
   data() {
     return {
@@ -21,10 +24,18 @@ export default {
     pick(evt) {
       const id = evt.target.dataset.id;
       this.choose(id);
+    },
+
+    colorFrom(value) {
+      const colorUtil = new ColorUtils(value);
+      return colorUtil.textColor();
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.picker-colors {
+  cursor: pointer;
+}
 </style>
