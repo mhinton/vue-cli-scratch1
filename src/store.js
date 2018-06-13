@@ -25,15 +25,15 @@ export default new Vuex.Store({
           value: false,
           type: "favorite",
           render: "Favorite"
-        },
-        {
-          propId: "JeA7oug2QpqYTqAec",
-          label: "enabled",
-          value: true,
-          text: true,
-          type: "button",
-          render: "Boolean"
         }
+        // {
+        //   propId: "JeA7oug2QpqYTqAec",
+        //   label: "enabled",
+        //   value: true,
+        //   text: true,
+        //   type: "button",
+        //   render: "Boolean"
+        // }
       ]
     },
     propOptions: [
