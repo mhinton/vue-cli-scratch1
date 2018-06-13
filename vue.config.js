@@ -2,7 +2,9 @@ module.exports = {
   pluginOptions: {
     graphqlMock: true,
     apolloEngine: false
-  }
+  },
+
+  productionSourceMap: false
 
   // devServer: {
   //   open: process.platform === "darwin",
