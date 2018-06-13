@@ -27,20 +27,29 @@ export default {
 
   methods: {
     color() {
-      return this.$props.property.text;
+      if (typeof this.$props.property.value === "string") {
+        return this.$props.property.text;
+      }
+      return "green-dark";
     },
 
     hoverColor() {
-      const colorUtil = new ColorUtils(this.$props.property.value);
-      const options = this.$store.state.propOptions.filter(
-        p => p.render === this.$props.property.render
-      );
-      return colorUtil.hoverColorFromOptions(options);
+      if (typeof this.$props.property.value === "string") {
+        const colorUtil = new ColorUtils(this.$props.property.value);
+        const options = this.$store.state.propOptions.filter(
+          p => p.render === this.$props.property.render
+        );
+        return colorUtil.hoverColorFromOptions(options);
+      }
+      return "green";
     },
 
     textColor() {
-      const colorUtil = new ColorUtils(this.$props.property.value);
-      return colorUtil.textColor();
+      if (typeof this.$props.property.value === "string") {
+        const colorUtil = new ColorUtils(this.$props.property.value);
+        return colorUtil.textColor();
+      }
+      return "white";
     },
 
     edit() {
@@ -48,16 +57,20 @@ export default {
       const items = this.$store.state.propOptions.filter(
         opt => opt.render === this.$props.property.render
       );
-      this.editor = new editorClass({
-        propsData: {
-          items: items
-        },
-        methods: {
-          choose: this.choose
-        }
-      });
-      this.editor.$mount();
-      this.$el.querySelector(".popper").appendChild(this.editor.$el);
+      if (items && items.length) {
+        this.editor = new editorClass({
+          propsData: {
+            items: items
+          },
+          methods: {
+            choose: this.choose
+          }
+        });
+        this.editor.$mount();
+        this.$el.querySelector(".popper").appendChild(this.editor.$el);
+      } else {
+        console.error("No items for picker");
+      }
     },
 
     cleanup() {
