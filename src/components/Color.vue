@@ -3,6 +3,7 @@
     <div v-for="item in items"
          :key="item.id"
          :data-id="item.id"
+         class="color-item"
          :style="`background-color: ${item.value}; color: ${colorFrom(item.value)}`"
          @click="pick">
       {{ item.text }}
@@ -37,5 +38,7 @@ export default {
 <style lang="scss">
 .picker-colors {
   cursor: pointer;
+  padding: 0;
+  margin: 0;
 }
 </style>
