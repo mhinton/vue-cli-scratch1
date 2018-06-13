@@ -16,7 +16,7 @@
 import Vue from "vue";
 import Mapper from "../mapper.js";
 import Popper from "vue-popperjs";
-import { TinyColor } from "@ctrl/tinycolor";
+import ColorUtils from "@/lib/ColorUtils";
 import "vue-popperjs/dist/css/vue-popper.css";
 
 export default {
@@ -27,43 +27,20 @@ export default {
 
   methods: {
     color() {
-      return this.property.text;
+      return this.$props.property.text;
     },
 
     hoverColor() {
-      const property = this.$props.property;
-      const color = new TinyColor(property.value);
-      let newIdx = 0;
-      if (color.isLight()) {
-        newIdx -= 2;
-      } else {
-        newIdx += 2;
-      }
+      const colorUtil = new ColorUtils(this.$props.property.value);
       const options = this.$store.state.propOptions.filter(
-        p => p.render === property.render
+        p => p.render === this.$props.property.render
       );
-      const currentOption = options.find(p => p.value === property.value);
-      const currentIdx = this.$store.state.propOptions.indexOf(currentOption);
-      newIdx = currentIdx + newIdx;
-      if (newIdx <= 0 || newIdx >= options.length) {
-        // handle ends
-        if (newIdx < 0) {
-          newIdx = options.length - newIdx;
-        } else {
-          newIdx = 0 + newIdx;
-        }
-      }
-      return options[newIdx].text;
+      return colorUtil.hoverColorFromOptions(options);
     },
 
     textColor() {
-      const property = this.$props.property;
-      const color = new TinyColor(property.value);
-      if (color.isLight()) {
-        return "black";
-      } else {
-        return "white";
-      }
+      const colorUtil = new ColorUtils(this.$props.property.value);
+      return colorUtil.textColor();
     },
 
     edit() {
@@ -89,7 +66,6 @@ export default {
     },
 
     choose(newPropOptionId) {
-      this.cleanup();
       const newPropOpt = this.$store.state.propOptions.find(
         propOpt => propOpt.id === newPropOptionId
       );
@@ -98,6 +74,7 @@ export default {
         value: newPropOpt.value,
         text: newPropOpt.text
       });
+      this.cleanup();
     }
   }
 };
