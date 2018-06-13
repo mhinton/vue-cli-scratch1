@@ -115,6 +115,8 @@ export default {
   text-align: center;
   font-size: 14pt;
   border: 1px #ebebeb solid;
+  margin: 0;
+  padding: 0;
   /* padding: 2px;
   display: inline-block;
   border-radius: 3px;

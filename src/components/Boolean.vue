@@ -32,5 +32,13 @@ export default {
   cursor: pointer;
   padding: 0;
   margin: 0;
+
+  div {
+    &:hover {
+      background-color: rgb(229, 226, 226);
+    }
+    line-height: 1.5em;
+    padding: 2px;
+  }
 }
 </style>
