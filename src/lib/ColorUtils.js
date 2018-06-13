@@ -24,7 +24,10 @@ export default class ColorUtils {
         newIdx = 0 + newIdx;
       }
     }
-    return options[newIdx].text;
+    const opt = options[newIdx];
+    if (opt) {
+      return opt.text;
+    }
   }
 
   textColor() {
