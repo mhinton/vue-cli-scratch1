@@ -25,18 +25,32 @@ export default new Vuex.Store({
           value: false,
           type: "favorite",
           render: "Favorite"
+        },
+        {
+          propId: "JeA7oug2QpqYTqAec",
+          type: "button",
+          label: "enabled",
+          value: true,
+          text: "true",
+          render: "Boolean"
         }
-        // {
-        //   propId: "JeA7oug2QpqYTqAec",
-        //   label: "enabled",
-        //   value: true,
-        //   text: true,
-        //   type: "button",
-        //   render: "Boolean"
-        // }
       ]
     },
     propOptions: [
+      {
+        id: "a74JmGW4XgRDBt7M9",
+        propId: "JeA7oug2QpqYTqAec",
+        render: "Boolean",
+        text: "true",
+        value: true
+      },
+      {
+        id: "eC5fknPHQNqLZQZi5",
+        propId: "JeA7oug2QpqYTqAec",
+        render: "Boolean",
+        text: "false",
+        value: false
+      },
       {
         id: "TEDvDt3GoKtYuPEmc",
         render: "Color",
@@ -105,3 +119,93 @@ export default new Vuex.Store({
     }
   }
 });
+
+// Schemas generated with https://www.liquid-technologies.com/online-json-to-schema-converter
+// property
+// {
+//   "$schema": "http://json-schema.org/draft-04/schema#",
+//   "type": "object",
+//   "properties": {
+//     "propId": {
+//       "type": "string"
+//     },
+//     "type": {
+//       "type": "string"
+//     },
+//     "label": {
+//       "type": "string"
+//     },
+//     "value": {
+//       "type": "string"
+//     },
+//     "text": {
+//       "type": "string"
+//     },
+//     "render": {
+//       "type": "string"
+//     }
+//   },
+//   "required": [
+//     "propId",
+//     "type",
+//     "label",
+//     "value",
+//     "text",
+//     "render"
+//   ]
+// }
+// propOptions
+//  boolean
+// {
+//   "$schema": "http://json-schema.org/draft-04/schema#",
+//   "type": "object",
+//   "properties": {
+//     "id": {
+//       "type": "string"
+//     },
+//     "propId": {
+//       "type": "string"
+//     },
+//     "render": {
+//       "type": "string"
+//     },
+//     "text": {
+//       "type": "string"
+//     },
+//     "value": {
+//       "type": "boolean"
+//     }
+//   },
+//   "required": [
+//     "id",
+//     "propId",
+//     "render",
+//     "text",
+//     "value"
+//   ]
+// }
+//  color
+// {
+//   "$schema": "http://json-schema.org/draft-04/schema#",
+//   "type": "object",
+//   "properties": {
+//     "id": {
+//       "type": "string"
+//     },
+//     "render": {
+//       "type": "string"
+//     },
+//     "text": {
+//       "type": "string"
+//     },
+//     "value": {
+//       "type": "string"
+//     }
+//   },
+//   "required": [
+//     "id",
+//     "render",
+//     "text",
+//     "value"
+//   ]
+// }
