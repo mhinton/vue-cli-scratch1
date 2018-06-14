@@ -10,12 +10,12 @@ export default new VueRouter({
   mode: "history",
   routes: [
     {
-      path: "/",
+      path: "/vue",
       name: "home",
       component: Home
     },
     {
-      path: "/library",
+      path: "/",
       name: "library",
       component: Library
     },
