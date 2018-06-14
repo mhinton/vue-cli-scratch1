@@ -53,7 +53,8 @@ export default {
   margin: 1em;
   background-color: black;
   color: #cccccc;
-  width: 20%;
+  width: 25%;
+  max-width: 250px;
   float: left;
 
   .cmp1head {
