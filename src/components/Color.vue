@@ -1,5 +1,5 @@
 <template>
-  <div class="picker-colors">
+  <div class="items picker-colors">
     <div v-for="item in items"
          :key="item.id"
          :data-id="item.id"
