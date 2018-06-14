@@ -1,8 +1,9 @@
 <template>
-  <popper ref="popup" :options="{placement: 'top'}" trigger="click" @hide="cleanup">
+  <popper ref="popup" :options="{ placement: 'top' }" trigger="click" @hide="cleanup">
     <div class="popper">
       <!-- Prop editor will be rendered here -->
     </div>
+    <!-- <div class="popper__arrow" x-arrow=""></div> -->
 
     <button slot="reference"
             :class="`bg-${color()} hover:bg-${hoverColor()} text-${textColor()} font-bold py-2 px-4 rounded-full border-2`"
@@ -58,6 +59,9 @@ export default {
         opt => opt.render === this.$props.property.render
       );
       if (items && items.length) {
+        if (this.editor) {
+          this.cleanup();
+        }
         this.editor = new editorClass({
           propsData: {
             items: items
@@ -74,6 +78,7 @@ export default {
     },
 
     cleanup() {
+      Array.from(this.editor.$el.children).forEach(el => el.remove());
       this.editor.$el.remove();
       this.editor.$destroy();
     },
@@ -94,20 +99,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @function set-text-color($color) {
-//   @if (lightness($color) > 50) {
-//     @return #000000; // Lighter backgorund, return dark color
-//   } @else {
-//     @return #ffffff; // Darker background, return light color
-//   }
-// }
-// div {
-//   color: set-text-color(#212121);
-//   span {
-//     mix-blend-mode: luminosity;
-//   }
-// }
-
 .popper {
   /* width: auto; */
   background-color: #fafafa;
