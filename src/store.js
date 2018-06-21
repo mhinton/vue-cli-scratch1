@@ -17,7 +17,7 @@ export default new Vuex.Store({
           label: "color",
           value: "#2779bd",
           text: "blue-dark",
-          render: "Color"
+          render: "Color" // <- render should be editComponent
         },
         {
           propId: "H9ho3xBaDWmDYA4in",
@@ -40,7 +40,7 @@ export default new Vuex.Store({
       {
         id: "a74JmGW4XgRDBt7M9",
         propId: "JeA7oug2QpqYTqAec",
-        render: "Boolean",
+        render: "Boolean", // <- render should be editComponent
         text: "true",
         value: true
       },
